@@ -15,8 +15,8 @@ public class LoadDatabase {
     CommandLineRunner initDatabase(QuoteRepository repository) {
 
         return args -> {
-            log.info("Preloading " + repository.save(new Quote("Bilbo Baggins")));
-            log.info("Preloading " + repository.save(new Quote("Frodo Baggins")));
+             log.info("Preloading " + repository.save(new Quote("Bilbo Baggins")));
+            // log.info("Preloading " + repository.save(new Quote("Frodo Baggins")));
         };
     }
 }
