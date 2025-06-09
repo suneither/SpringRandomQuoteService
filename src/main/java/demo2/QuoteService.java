@@ -46,9 +46,24 @@ public class QuoteService {
                 .build();
     }
 
-    // create PutMapping for fully updatable entity letting enter id as an PathVaraible
-
+   //TODO // create PutMapping for fully updatable entity letting enter id as an PathVaraible
     // create QuoteUpdateDTO
+    // add author field to model
+    // make neccessary variable only quote author optional
+
+
+    // add authorization to 3 levels
+    // admin can do everything
+    // moderator can modify but not delete
+    // guest(without authorization) can get one or all quotes
+
+
+    // organize folder structure
+
+    // create tests for each endpoint
+    // check if when endpoint get wrong data is going to throw random things and crash?
+
+    // create tests for each service layer method
 
     public QuoteResponseDTO findAll() {
         return new QuoteResponseDTO.Builder()
