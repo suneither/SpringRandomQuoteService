@@ -14,24 +14,20 @@ public class QuoteService {
     public Quote getRandomQuote(){
         return repository.findAll().stream()
                 .findAny()
-                .orElse(new Quote("No Quotes were found"));
-
-        // Make it to return custom error message related to not found quote
+                .orElseThrow(() -> new EntityNotFoundException("We are out of quotes!"));
     }
 
-    public QuoteResponseDTO deleteById(Long id) {
-        StringBuilder sb = new StringBuilder();
+    public QuoteResponseDTO deleteById(Long id){
         String message;
+
         Optional<Quote> quoteOptional = repository.findById(id);
         if(quoteOptional.isPresent()){
             repository.deleteById(id);
-            message = sb.append("Quote by ").append(id).append(" was successfully deleted.").toString();
+            message = "Quote #" + id + " was successfully deleted.";
             return new QuoteResponseDTO(message, quoteOptional.get());
         }
 
-        message = sb.append("Quote by ").append(id).append("was not found.").toString();
-        return new QuoteResponseDTO(message, null);
-
-        // is it OK to send ResponseEntity with status 200 if quote was not found nor deleted?
+        message = "Quote #" + id + " was not found.";
+        throw new EntityNotFoundException(message);
     }
 }
