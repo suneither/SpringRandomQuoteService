@@ -13,8 +13,10 @@ public class QuoteController {
     QuoteService quoteService;
 
     @GetMapping("/getRandomQuote")
-    public Quote getRandomQuote() {
-        return quoteService.getRandomQuote();
+    public ResponseEntity<QuoteResponseDTO> getRandomQuote() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(quoteService.getRandomQuote());
     }
 
     @GetMapping("/findAll")
@@ -32,12 +34,10 @@ public class QuoteController {
     }
 
     @PostMapping("/saveQuote")
-    public ResponseEntity<QuoteResponseDTO> saveQuote(@RequestBody Quote quote){
+    public ResponseEntity<QuoteResponseDTO> saveQuote(@RequestBody QuoteCreateDTO quoteCreateDTO){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(quoteService.saveQuote(quote));
+                .body(quoteService.saveQuote(quoteCreateDTO));
     }
-
-
 
 }

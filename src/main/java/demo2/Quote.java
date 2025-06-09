@@ -17,6 +17,10 @@ public class Quote {
         this.quote = quote;
     }
 
+    Quote(QuoteCreateDTO quoteCreateDTO){
+        this.quote = quoteCreateDTO.getQuote();
+    }
+
     public Long getId() {
         return id;
     }

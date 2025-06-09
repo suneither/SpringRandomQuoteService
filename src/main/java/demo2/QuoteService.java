@@ -11,9 +11,13 @@ public class QuoteService {
     @Autowired
     QuoteRepository repository;
 
-    public Quote getRandomQuote(){
+    public QuoteResponseDTO getRandomQuote(){
         return repository.findAll().stream()
                 .findAny()
+                .map(quote -> new QuoteResponseDTO.Builder()
+                        .addQuote(quote)
+                        .setMessage("Successfully generated a quote.")
+                        .build())
                 .orElseThrow(() -> new EntityNotFoundException("We are out of quotes!"));
     }
 
@@ -34,26 +38,20 @@ public class QuoteService {
         throw new EntityNotFoundException(message);
     }
 
-    public QuoteResponseDTO saveQuote(Quote quote) {
-        Optional<Quote> quoteOptional = Optional.of(repository.save(quote));
+    public QuoteResponseDTO saveQuote(QuoteCreateDTO quoteCreateDTO) {
+        Optional<Quote> quoteOptional = Optional.of(repository.save(new Quote(quoteCreateDTO)));
         return new QuoteResponseDTO.Builder()
                 .addQuote(quoteOptional.get())
                 .setMessage("Quote successfully saved.")
                 .build();
     }
 
-    // save quote without allowing id as an input
-
     // create PutMapping for fully updatable entity letting enter id as an PathVaraible
 
-    // create QuoteCreateDTO
     // create QuoteUpdateDTO
-
-    // change All endpoints that send Quote object to DTO's
 
     public QuoteResponseDTO findAll() {
         return new QuoteResponseDTO.Builder()
-                .setMessage("All found quotes.")
                 .addQuotes(repository.findAll())
                 .build();
     }
