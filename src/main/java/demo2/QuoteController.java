@@ -17,11 +17,25 @@ public class QuoteController {
         return quoteService.getRandomQuote();
     }
 
+    @GetMapping("/findAll")
+    public ResponseEntity<QuoteResponseDTO> findAll(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(quoteService.findAll());
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<QuoteResponseDTO> deleteById(@PathVariable Long id){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(quoteService.deleteById(id));
+    }
+
+    @PostMapping("/saveQuote")
+    public ResponseEntity<QuoteResponseDTO> saveQuote(@RequestBody Quote quote){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(quoteService.saveQuote(quote));
     }
 
 

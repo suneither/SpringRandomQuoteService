@@ -1,18 +1,26 @@
 package demo2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuoteResponseDTO {
     private String message;
-    private Quote quote;
+    private final List<Quote> quotes = new ArrayList<>();
 
     private QuoteResponseDTO(){}
 
-    QuoteResponseDTO(String message, Quote quote){
+    QuoteResponseDTO(String message, List<Quote> quotes){
         this.message = message;
-        this.quote = quote;
+        this.quotes.addAll(quotes);
     }
 
-    public void setQuote(Quote quote){
-        this.quote = quote;
+    QuoteResponseDTO(Builder builder){
+        this.message = builder.message;
+        this.quotes.addAll(builder.quotes);
+    }
+
+    public void addQuote(Quote quote){
+        this.quotes.add(quote);
     }
 
     public void setMessage(String message){
@@ -23,7 +31,31 @@ public class QuoteResponseDTO {
         return message;
     }
 
-    public Quote getQuote() {
-        return quote;
+    public List<Quote> getQuotes() {
+        return quotes;
+    }
+
+    public static class Builder {
+        private String message;
+        private final List<Quote> quotes = new ArrayList<>();
+
+        public Builder setMessage(String message){
+            this.message = message;
+            return this;
+        }
+
+        public Builder addQuote(Quote quote){
+            this.quotes.add(quote);
+            return this;
+        }
+
+        public Builder addQuotes(List<Quote> quotes){
+            this.quotes.addAll(quotes);
+            return this;
+        }
+
+        public QuoteResponseDTO build(){
+            return new QuoteResponseDTO(this);
+        }
     }
 }

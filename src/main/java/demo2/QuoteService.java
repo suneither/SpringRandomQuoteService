@@ -24,10 +24,37 @@ public class QuoteService {
         if(quoteOptional.isPresent()){
             repository.deleteById(id);
             message = "Quote #" + id + " was successfully deleted.";
-            return new QuoteResponseDTO(message, quoteOptional.get());
+            return new QuoteResponseDTO.Builder()
+                    .addQuote(quoteOptional.get())
+                    .setMessage(message)
+                    .build();
         }
 
         message = "Quote #" + id + " was not found.";
         throw new EntityNotFoundException(message);
+    }
+
+    public QuoteResponseDTO saveQuote(Quote quote) {
+        Optional<Quote> quoteOptional = Optional.of(repository.save(quote));
+        return new QuoteResponseDTO.Builder()
+                .addQuote(quoteOptional.get())
+                .setMessage("Quote successfully saved.")
+                .build();
+    }
+
+    // save quote without allowing id as an input
+
+    // create PutMapping for fully updatable entity letting enter id as an PathVaraible
+
+    // create QuoteCreateDTO
+    // create QuoteUpdateDTO
+
+    // change All endpoints that send Quote object to DTO's
+
+    public QuoteResponseDTO findAll() {
+        return new QuoteResponseDTO.Builder()
+                .setMessage("All found quotes.")
+                .addQuotes(repository.findAll())
+                .build();
     }
 }
