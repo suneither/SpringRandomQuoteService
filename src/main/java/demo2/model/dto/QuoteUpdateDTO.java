@@ -1,4 +1,4 @@
-package demo2;
+package demo2.model.dto;
 
 public class QuoteUpdateDTO {
 }

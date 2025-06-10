@@ -1,5 +1,6 @@
-package demo2;
+package demo2.exception;
 
+import demo2.controller.QuoteController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

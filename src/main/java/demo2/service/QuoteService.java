@@ -1,5 +1,10 @@
-package demo2;
+package demo2.service;
 
+import demo2.exception.EntityNotFoundException;
+import demo2.repository.QuoteRepository;
+import demo2.model.dto.QuoteCreateDTO;
+import demo2.model.dto.QuoteResponseDTO;
+import demo2.model.entity.Quote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

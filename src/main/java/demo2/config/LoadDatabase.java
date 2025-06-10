@@ -1,5 +1,7 @@
-package demo2;
+package demo2.config;
 
+import demo2.model.entity.Quote;
+import demo2.repository.QuoteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

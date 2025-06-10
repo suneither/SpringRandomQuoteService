@@ -1,4 +1,6 @@
-package demo2;
+package demo2.model.dto;
+
+import demo2.model.entity.Quote;
 
 import java.util.ArrayList;
 import java.util.List;

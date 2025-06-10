@@ -1,5 +1,9 @@
-package demo2;
+package demo2.controller;
 
+import demo2.model.dto.QuoteCreateDTO;
+import demo2.model.dto.QuoteResponseDTO;
+import demo2.model.dto.QuoteUpdateDTO;
+import demo2.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

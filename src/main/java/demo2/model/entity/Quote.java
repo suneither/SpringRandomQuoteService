@@ -1,5 +1,6 @@
-package demo2;
+package demo2.model.entity;
 
+import demo2.model.dto.QuoteCreateDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,11 +16,11 @@ public class Quote {
 
     private Quote(){}
 
-    Quote(String quote) {
+    public Quote(String quote) {
         this.quote = quote;
     }
 
-    Quote(QuoteCreateDTO quoteCreateDTO){
+    public Quote(QuoteCreateDTO quoteCreateDTO){
         this.quote = quoteCreateDTO.getQuote();
     }
 
