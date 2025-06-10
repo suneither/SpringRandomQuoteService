@@ -2,8 +2,13 @@ package demo2;
 
 public class QuoteCreateDTO {
     private String quote;
+    private Author author;
 
-    private void quote(){
+    private QuoteCreateDTO(){
+    }
+
+    QuoteCreateDTO(String quote){
+        this.quote = quote;
     }
 
     public void setQuote(String quote) {

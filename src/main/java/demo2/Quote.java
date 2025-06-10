@@ -1,8 +1,6 @@
 package demo2;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Quote {
@@ -11,7 +9,11 @@ public class Quote {
     private Long id;
     private String quote;
 
-    Quote(){}
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private Author author;
+
+    private Quote(){}
 
     Quote(String quote) {
         this.quote = quote;
@@ -29,7 +31,16 @@ public class Quote {
         return quote;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
     public void setQuote(String quote) {
         this.quote = quote;
     }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
 }

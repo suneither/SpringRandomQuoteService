@@ -48,7 +48,8 @@ public class QuoteService {
 
    //TODO // create PutMapping for fully updatable entity letting enter id as an PathVaraible
     // create QuoteUpdateDTO
-    // add author field to model
+    // add author field to model as a new DB Entity
+    // research how they can be linked
     // make neccessary variable only quote author optional
 
 
@@ -69,5 +70,9 @@ public class QuoteService {
         return new QuoteResponseDTO.Builder()
                 .addQuotes(repository.findAll())
                 .build();
+    }
+
+    public QuoteResponseDTO updateQuote() {
+        return new QuoteResponseDTO.Builder().build();
     }
 }

@@ -40,4 +40,11 @@ public class QuoteController {
                 .body(quoteService.saveQuote(quoteCreateDTO));
     }
 
+    @PutMapping("/updateQuote")
+    public ResponseEntity<QuoteResponseDTO> updateQuote(@RequestBody QuoteUpdateDTO quoteUpdateDTO){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(quoteService.updateQuote());
+    }
+
 }
