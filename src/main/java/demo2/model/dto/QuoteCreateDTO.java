@@ -1,10 +1,7 @@
 package demo2.model.dto;
 
-import demo2.model.entity.Author;
-
 public class QuoteCreateDTO {
     private String quote;
-    private Author author;
 
     private QuoteCreateDTO(){
     }

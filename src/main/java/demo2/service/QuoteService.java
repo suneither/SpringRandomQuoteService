@@ -58,6 +58,12 @@ public class QuoteService {
     // make neccessary variable only quote author optional
 
 
+    // TODO: to saveQuote and updateQuote First I need to configure authorization
+    // use that authorization name and surname as a author data
+    // and then go to authorization level when save, update and quote/author repository works without circular infinite information pulling
+    // (I remember that there was a problem when one model has a lot of other model stuff and that goes both ways circular depenndencies)
+
+
     // add authorization to 3 levels
     // admin can do everything
     // moderator can modify but not delete
